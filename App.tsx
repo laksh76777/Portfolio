@@ -103,7 +103,7 @@ const App: React.FC = () => {
         {renderPage()}
       </main>
       <ChatWidget />
-      <Footer />
+      <Footer theme={theme} />
     </div>
   );
 };
