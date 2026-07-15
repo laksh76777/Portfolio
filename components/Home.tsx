@@ -19,6 +19,7 @@ import { motion, AnimatePresence } from 'motion/react';
 
 interface HomeProps {
   onNavigate: (path: string) => void;
+  theme?: string;
 }
 
 interface Particle {
@@ -97,7 +98,7 @@ const COSMIC_REALMS = [
   }
 ];
 
-export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
+export const Home: React.FC<HomeProps> = ({ onNavigate, theme }) => {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [trailPos, setTrailPos] = useState({ x: 0, y: 0 });
   const [dimensions, setDimensions] = useState({ width: 1200, height: 800 });
@@ -118,7 +119,33 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
   const lastScrollY = useRef(0);
   const velocityTimer = useRef<number | null>(null);
 
-  const activeRealm = COSMIC_REALMS[activeRealmIndex];
+  const rawRealm = COSMIC_REALMS[activeRealmIndex];
+  const isLight = theme === 'light';
+
+  const activeRealm = {
+    ...rawRealm,
+    bgBase: isLight ? (
+      activeRealmIndex === 0 ? 'bg-slate-50' :
+      activeRealmIndex === 1 ? 'bg-zinc-50' :
+      activeRealmIndex === 2 ? 'bg-stone-50' :
+      'bg-gray-50'
+    ) : rawRealm.bgBase,
+    particleColor: isLight ? (
+      activeRealmIndex === 0 ? '#4f46e5' :
+      activeRealmIndex === 1 ? '#7c3aed' :
+      activeRealmIndex === 2 ? '#059669' :
+      '#d97706'
+    ) : rawRealm.particleColor,
+    sparkColor: isLight ? (
+      activeRealmIndex === 0 ? '#6366f1' :
+      activeRealmIndex === 1 ? '#a855f7' :
+      activeRealmIndex === 2 ? '#10b981' :
+      '#f59e0b'
+    ) : rawRealm.sparkColor,
+    gridColor: isLight ? 'rgba(0, 0, 0, 0.08)' : rawRealm.gridColor,
+    primary: isLight ? 'rgba(79, 70, 229, 0.15)' : rawRealm.primary,
+    secondary: isLight ? 'rgba(124, 58, 237, 0.08)' : rawRealm.secondary,
+  };
 
   // Tracking dimension updates
   useEffect(() => {

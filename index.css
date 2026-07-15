@@ -118,3 +118,221 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #312e81;
 }
+
+/* High-Contrast Light Theme Overrides */
+html.light-mode body,
+body.light-mode {
+  background-color: #f8fafc !important;
+  color: #090d16 !important;
+}
+
+/* Glass panel and standard containers overrides */
+body.light-mode .glass-panel,
+body.light-mode .glass-panel-hover,
+body.light-mode .bg-slate-950,
+body.light-mode .bg-zinc-950,
+body.light-mode .bg-stone-950,
+body.light-mode .bg-gray-950,
+body.light-mode .bg-slate-900\/10,
+body.light-mode .bg-slate-950\/50,
+body.light-mode .bg-slate-950\/80,
+body.light-mode .bg-slate-950\/85,
+body.light-mode .bg-slate-900\/90,
+body.light-mode .bg-slate-900\/40,
+body.light-mode .bg-slate-900\/60,
+body.light-mode .bg-slate-950\/40,
+body.light-mode .bg-slate-900\/80,
+body.light-mode .bg-gradient-to-r.from-indigo-950.via-slate-900.to-indigo-950,
+body.light-mode .bg-slate-950\/50 {
+  background-color: #ffffff !important;
+  background: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  color: #090d16 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Ensure the outer wrapper screens keep a soft light-gray canvas background */
+body.light-mode .min-h-screen,
+body.light-mode main,
+body.light-mode div.min-h-screen {
+  background-color: #f8fafc !important;
+  background: #f8fafc !important;
+}
+
+/* Text Overrides for High Contrast */
+body.light-mode h1,
+body.light-mode h2,
+body.light-mode h3,
+body.light-mode h4,
+body.light-mode h5,
+body.light-mode h6,
+body.light-mode .text-white,
+body.light-mode .text-slate-100,
+body.light-mode .text-slate-200,
+body.light-mode .text-slate-300,
+body.light-mode .text-slate-400,
+body.light-mode .text-slate-500,
+body.light-mode .text-zinc-100,
+body.light-mode .text-zinc-200,
+body.light-mode .text-zinc-300,
+body.light-mode .text-zinc-400,
+body.light-mode strong {
+  color: #090d16 !important;
+}
+
+body.light-mode .text-slate-400,
+body.light-mode .text-slate-500,
+body.light-mode .text-zinc-400,
+body.light-mode .text-zinc-500 {
+  color: #334155 !important;
+}
+
+/* Nav items and buttons under light mode */
+body.light-mode .text-slate-400:hover,
+body.light-mode .hover\:text-indigo-300:hover {
+  color: #4f46e5 !important;
+}
+
+body.light-mode nav {
+  background-color: rgba(248, 250, 252, 0.8) !important;
+  border-color: #cbd5e1 !important;
+}
+
+body.light-mode nav a span {
+  color: #090d16 !important;
+}
+
+body.light-mode nav a.text-slate-400 {
+  color: #475569 !important;
+}
+
+body.light-mode nav a.text-slate-400:hover {
+  color: #4f46e5 !important;
+}
+
+/* Table header override */
+body.light-mode thead,
+body.light-mode th {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+}
+
+/* Scrollbar under light mode */
+body.light-mode ::-webkit-scrollbar-track {
+  background: #f8fafc !important;
+}
+
+body.light-mode ::-webkit-scrollbar-thumb {
+  background: #cbd5e1 !important;
+}
+
+body.light-mode ::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8 !important;
+}
+
+/* Input/Textarea fields under light mode */
+body.light-mode input,
+body.light-mode textarea {
+  background-color: #ffffff !important;
+  color: #090d16 !important;
+  border-color: #cbd5e1 !important;
+}
+
+body.light-mode input::placeholder,
+body.light-mode textarea::placeholder {
+  color: #94a3b8 !important;
+}
+
+body.light-mode input:focus,
+body.light-mode textarea:focus {
+  border-color: #4f46e5 !important;
+  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2) !important;
+}
+
+/* Borders */
+body.light-mode .border-slate-800,
+body.light-mode .border-slate-900,
+body.light-mode .border-slate-850,
+body.light-mode .border-slate-900\/40,
+body.light-mode .border-slate-800\/80,
+body.light-mode .border-slate-800\/60,
+body.light-mode .border-slate-850\/80,
+body.light-mode .border-slate-900\/60,
+body.light-mode .border-slate-950\/80 {
+  border-color: #cbd5e1 !important;
+}
+
+/* High Contrast Light Mode Badge overrides */
+body.light-mode .bg-indigo-500\/10,
+body.light-mode .bg-indigo-500\/15,
+body.light-mode .bg-indigo-500\/20 {
+  background-color: #e0e7ff !important;
+  color: #3730a3 !important;
+  border-color: #818cf8 !important;
+}
+
+body.light-mode .bg-purple-500\/10,
+body.light-mode .bg-purple-500\/15,
+body.light-mode .bg-purple-500\/20 {
+  background-color: #f3e8ff !important;
+  color: #6b21a8 !important;
+  border-color: #c084fc !important;
+}
+
+body.light-mode .bg-emerald-500\/10,
+body.light-mode .bg-emerald-500\/15,
+body.light-mode .bg-emerald-500\/20 {
+  background-color: #d1fae5 !important;
+  color: #065f46 !important;
+  border-color: #34d399 !important;
+}
+
+body.light-mode .bg-amber-500\/10,
+body.light-mode .bg-amber-500\/15,
+body.light-mode .bg-amber-500\/20 {
+  background-color: #fef3c7 !important;
+  color: #92400e !important;
+  border-color: #fbbf24 !important;
+}
+
+body.light-mode .text-indigo-400,
+body.light-mode .text-indigo-300 {
+  color: #312e81 !important; /* Higher contrast dark indigo */
+}
+
+body.light-mode .text-purple-400,
+body.light-mode .text-purple-300 {
+  color: #581c87 !important; /* Higher contrast dark purple */
+}
+
+body.light-mode .text-emerald-400,
+body.light-mode .text-emerald-300 {
+  color: #064e3b !important; /* Higher contrast dark emerald */
+}
+
+body.light-mode .text-amber-400,
+body.light-mode .text-amber-300 {
+  color: #78350f !important; /* Higher contrast dark amber */
+}
+
+/* Specific buttons inside sections */
+body.light-mode .bg-slate-900,
+body.light-mode .bg-slate-850 {
+  background-color: #e2e8f0 !important;
+  color: #090d16 !important;
+  border-color: #cbd5e1 !important;
+}
+
+body.light-mode .bg-slate-900:hover,
+body.light-mode .bg-slate-850:hover {
+  background-color: #cbd5e1 !important;
+}
+
+/* Grid background overrides */
+body.light-mode .bg-grid-pattern {
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px) !important;
+}
+

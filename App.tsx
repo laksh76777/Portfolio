@@ -12,6 +12,24 @@ const App: React.FC = () => {
   // Initialize state based on current hash, defaulting to '/'
   const [currentPath, setCurrentPath] = useState(window.location.hash.slice(1) || '/');
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [theme, setTheme] = useState<string>(() => {
+    return localStorage.getItem('portfolio-theme') || 'dark';
+  });
+
+  useEffect(() => {
+    if (theme === 'light') {
+      document.body.classList.add('light-mode');
+      document.documentElement.classList.add('light-mode');
+    } else {
+      document.body.classList.remove('light-mode');
+      document.documentElement.classList.remove('light-mode');
+    }
+    localStorage.setItem('portfolio-theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(prev => (prev === 'dark' ? 'light' : 'dark'));
+  };
 
   useEffect(() => {
     const handleHashChange = () => {
@@ -58,7 +76,7 @@ const App: React.FC = () => {
   const renderPage = () => {
     switch (currentPath) {
       case '/':
-        return <Home onNavigate={handleNavigate} />;
+        return <Home onNavigate={handleNavigate} theme={theme} />;
       case '/resume':
         return <Resume />;
       case '/bio':
@@ -66,12 +84,12 @@ const App: React.FC = () => {
       case '/contact':
         return <Contact />;
       default:
-        return <Home onNavigate={handleNavigate} />;
+        return <Home onNavigate={handleNavigate} theme={theme} />;
     }
   };
 
   return (
-    <div className="flex flex-col min-h-screen font-sans bg-slate-950 text-slate-100 selection:bg-indigo-500/30 selection:text-indigo-200">
+    <div className={`flex flex-col min-h-screen font-sans ${theme === 'light' ? 'bg-slate-50 text-slate-900' : 'bg-slate-950 text-slate-100'} selection:bg-indigo-500/30 selection:text-indigo-200`}>
       {/* Global Scroll Progress Bar */}
       <motion.div 
         className="fixed top-0 left-0 right-0 h-[3.5px] bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 z-[100] origin-left pointer-events-none shadow-[0_1px_12px_rgba(139,92,246,0.6)]"
@@ -80,7 +98,7 @@ const App: React.FC = () => {
         animate={{ scaleX: scrollProgress }}
         transition={{ type: "spring", stiffness: 180, damping: 25, restDelta: 0.001 }}
       />
-      <Navbar currentPath={currentPath} onNavigate={handleNavigate} />
+      <Navbar currentPath={currentPath} onNavigate={handleNavigate} theme={theme} toggleTheme={toggleTheme} />
       <main className="flex-grow pt-16">
         {renderPage()}
       </main>

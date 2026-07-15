@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { Menu, X, Code2, Sparkles } from 'lucide-react';
+import { Menu, X, Code2, Sparkles, Sun, Moon } from 'lucide-react';
 import { NavItem } from '../types';
 import { motion, AnimatePresence } from 'motion/react';
 
 interface NavbarProps {
   currentPath: string;
   onNavigate: (path: string) => void;
+  theme: string;
+  toggleTheme: () => void;
 }
 
 const NAV_ITEMS: NavItem[] = [
@@ -15,7 +17,7 @@ const NAV_ITEMS: NavItem[] = [
   { label: 'Contact', path: '/contact' },
 ];
 
-export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
+export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate, theme, toggleTheme }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => setIsOpen(!isOpen);
@@ -83,8 +85,21 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
             })}
           </div>
 
-          {/* Connect CTA on Navbar */}
-          <div className="hidden md:flex items-center">
+          {/* Connect CTA and Theme Toggle on Navbar */}
+          <div className="hidden md:flex items-center gap-3">
+            {/* Theme Toggle Button */}
+            <motion.button
+              onClick={toggleTheme}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="p-2 rounded-full bg-slate-900/60 hover:bg-indigo-500/15 border border-slate-800/40 text-indigo-300 hover:text-white transition-all duration-300 flex items-center justify-center cursor-pointer shadow-[0_2px_10px_rgba(99,102,241,0.1)]"
+              title={theme === 'light' ? 'Switch to Dark Theme' : 'Switch to High-Contrast Light Theme'}
+              aria-label="Theme Switcher"
+              id="desktop-theme-switcher"
+            >
+              {theme === 'light' ? <Moon size={15} className="text-purple-400" /> : <Sun size={15} className="text-amber-400" />}
+            </motion.button>
+
             <motion.a
               href="/contact"
               onClick={(e) => handleLinkClick(e, '/contact')}
@@ -97,12 +112,22 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
             </motion.a>
           </div>
 
-          {/* Mobile menu button */}
-          <div className="flex items-center md:hidden">
+          {/* Mobile menu button and theme toggle */}
+          <div className="flex items-center gap-2 md:hidden">
+            <motion.button
+              onClick={toggleTheme}
+              whileTap={{ scale: 0.9 }}
+              className="p-1.5 rounded-lg text-slate-400 hover:text-indigo-400 hover:bg-slate-900/60 transition-colors cursor-pointer"
+              title={theme === 'light' ? 'Switch to Dark Theme' : 'Switch to High-Contrast Light Theme'}
+              aria-label="Theme Switcher Mobile"
+              id="mobile-theme-switcher"
+            >
+              {theme === 'light' ? <Moon size={18} className="text-purple-400" /> : <Sun size={18} className="text-amber-400" />}
+            </motion.button>
             <motion.button
               onClick={toggleMenu}
               whileTap={{ scale: 0.92 }}
-              className="inline-flex items-center justify-center p-1.5 rounded-lg text-slate-400 hover:text-indigo-400 hover:bg-slate-900/60 focus:outline-none transition-colors"
+              className="inline-flex items-center justify-center p-1.5 rounded-lg text-slate-400 hover:text-indigo-400 hover:bg-slate-900/60 focus:outline-none transition-colors cursor-pointer"
             >
               {isOpen ? <X size={20} /> : <Menu size={20} />}
             </motion.button>
