@@ -27,9 +27,9 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
   };
 
   return (
-    <nav className="fixed top-4 left-1/2 -translate-x-1/2 w-[calc(100%-1.5rem)] sm:w-[calc(100%-3rem)] max-w-5xl bg-slate-950/70 backdrop-blur-xl border border-slate-900/80 rounded-2xl z-50 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.7)]">
-      <div className="px-4 sm:px-6">
-        <div className="flex justify-between h-14 items-center">
+    <nav className="fixed top-0 left-0 right-0 w-full bg-slate-950/20 backdrop-blur-lg border-b border-slate-900/40 z-50 transition-all duration-300">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between h-16 items-center">
           
           {/* Logo Brand with Micro-Interactive Animation */}
           <div className="flex items-center">
